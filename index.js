@@ -6,8 +6,6 @@ const count = (function () {
   return { getNext }
 })();
 
-const printThreadName = threadName => console.log(threadName)
-
 const FifoThreadManager = (function() {
   const executionQueue = (function () {
     const flow = []
@@ -83,16 +81,16 @@ const SjfThreadManager = (function() {
 })();
 
 (async function() {
-  const thread1 = new Thread(count.getNext(), 'Thread 1', 300, printThreadName)
-  const thread2 = new Thread(count.getNext(), 'Thread 2', 450, printThreadName)
-  const thread3 = new Thread(count.getNext(), 'Thread 3', 050, printThreadName)
-  const thread4 = new Thread(count.getNext(), 'Thread 4', 700, printThreadName)
-  const thread5 = new Thread(count.getNext(), 'Thread 5', 999, printThreadName)
-  const thread6 = new Thread(count.getNext(), 'Thread 6', 333, printThreadName)
-  const thread7 = new Thread(count.getNext(), 'Thread 7', 123, printThreadName)
-  const thread8 = new Thread(count.getNext(), 'Thread 8', 476, printThreadName)
-  const thread9 = new Thread(count.getNext(), 'Thread 9', 876, printThreadName)
-  const thread10 = new Thread(count.getNext(), 'Thread 10', 233, printThreadName)
+  const thread1 = new Thread(count.getNext(), 'Thread 1', 300, console.log)
+  const thread2 = new Thread(count.getNext(), 'Thread 2', 450, console.log)
+  const thread3 = new Thread(count.getNext(), 'Thread 3', 050, console.log)
+  const thread4 = new Thread(count.getNext(), 'Thread 4', 700, console.log)
+  const thread5 = new Thread(count.getNext(), 'Thread 5', 999, console.log)
+  const thread6 = new Thread(count.getNext(), 'Thread 6', 333, console.log)
+  const thread7 = new Thread(count.getNext(), 'Thread 7', 123, console.log)
+  const thread8 = new Thread(count.getNext(), 'Thread 8', 476, console.log)
+  const thread9 = new Thread(count.getNext(), 'Thread 9', 876, console.log)
+  const thread10 = new Thread(count.getNext(), 'Thread 10', 233, console.log)
 
   FifoThreadManager.add(thread1)
   FifoThreadManager.add(thread2)
