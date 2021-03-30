@@ -1,11 +1,3 @@
-const count = (function () {
-  let counter = 0
-
-  const getNext = () => ++counter
-
-  return { getNext }
-})();
-
 const FifoThreadManager = (function() {
   const executionQueue = (function () {
     const flow = []
@@ -81,37 +73,37 @@ const SjfThreadManager = (function() {
 })();
 
 (async function() {
-  const thread1 = new Thread(count.getNext(), 'Thread 1', 300, console.log)
-  const thread2 = new Thread(count.getNext(), 'Thread 2', 450, console.log)
-  const thread3 = new Thread(count.getNext(), 'Thread 3', 050, console.log)
-  const thread4 = new Thread(count.getNext(), 'Thread 4', 700, console.log)
-  const thread5 = new Thread(count.getNext(), 'Thread 5', 999, console.log)
-  const thread6 = new Thread(count.getNext(), 'Thread 6', 333, console.log)
-  const thread7 = new Thread(count.getNext(), 'Thread 7', 123, console.log)
-  const thread8 = new Thread(count.getNext(), 'Thread 8', 476, console.log)
-  const thread9 = new Thread(count.getNext(), 'Thread 9', 876, console.log)
-  const thread10 = new Thread(count.getNext(), 'Thread 10', 233, console.log)
+  const thread01 = new Thread('Thread 01', 300, console.log)
+  const thread02 = new Thread('Thread 02', 450, console.log)
+  const thread03 = new Thread('Thread 03', 050, console.log)
+  const thread04 = new Thread('Thread 04', 700, console.log)
+  const thread05 = new Thread('Thread 05', 999, console.log)
+  const thread06 = new Thread('Thread 06', 333, console.log)
+  const thread07 = new Thread('Thread 07', 123, console.log)
+  const thread08 = new Thread('Thread 08', 476, console.log)
+  const thread09 = new Thread('Thread 09', 876, console.log)
+  const thread10 = new Thread('Thread 10', 233, console.log)
 
-  FifoThreadManager.add(thread1)
-  FifoThreadManager.add(thread2)
-  FifoThreadManager.add(thread3)
-  FifoThreadManager.add(thread4)
-  FifoThreadManager.add(thread5)
-  FifoThreadManager.add(thread6)
-  FifoThreadManager.add(thread7)
-  FifoThreadManager.add(thread8)
-  FifoThreadManager.add(thread9)
+  FifoThreadManager.add(thread01)
+  FifoThreadManager.add(thread02)
+  FifoThreadManager.add(thread03)
+  FifoThreadManager.add(thread04)
+  FifoThreadManager.add(thread05)
+  FifoThreadManager.add(thread06)
+  FifoThreadManager.add(thread07)
+  FifoThreadManager.add(thread08)
+  FifoThreadManager.add(thread09)
   FifoThreadManager.add(thread10)
 
-  SjfThreadManager.add(thread1)
-  SjfThreadManager.add(thread2)
-  SjfThreadManager.add(thread3)
-  SjfThreadManager.add(thread4)
-  SjfThreadManager.add(thread5)
-  SjfThreadManager.add(thread6)
-  SjfThreadManager.add(thread7)
-  SjfThreadManager.add(thread8)
-  SjfThreadManager.add(thread9)
+  SjfThreadManager.add(thread01)
+  SjfThreadManager.add(thread02)
+  SjfThreadManager.add(thread03)
+  SjfThreadManager.add(thread04)
+  SjfThreadManager.add(thread05)
+  SjfThreadManager.add(thread06)
+  SjfThreadManager.add(thread07)
+  SjfThreadManager.add(thread08)
+  SjfThreadManager.add(thread09)
   SjfThreadManager.add(thread10)
 
   await FifoThreadManager.executeProcesses()
@@ -125,9 +117,8 @@ const SjfThreadManager = (function() {
  * @param {number} burstTime 
  * @param {function} code 
  */
-function Thread(processID, processName, burstTime, code) {
+function Thread(processName, burstTime, code) {
   this.processName = processName;
-  this.processID = processID;
   this.burstTime = burstTime;
   this.code = code;
 
