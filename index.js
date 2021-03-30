@@ -19,8 +19,9 @@ const FifoThreadManager = (function() {
   const executeProcesses = async function () {
     console.log('Executando Fila de processos com escalonador FIFO')
 
-    for (const thread of executionQueue) {
-      console.log
+    while (executionQueue.length) {
+      const thread = executionQueue.shift()
+
       await thread.run()
     }
   }
@@ -61,7 +62,9 @@ const SjfThreadManager = (function() {
   const executeProcesses = async function () {
     console.log('Executando Fila de processos com escalonador SJF')
 
-    for (const thread of executionQueue) {
+    while (executionQueue.length) {
+      const thread = executionQueue.shift()
+      
       await thread.run()
     }
   }
